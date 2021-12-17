@@ -23,20 +23,24 @@ namespace GQuicker
 
         private void tabMain_Enter(object sender, EventArgs e)
         {
+            floServer.Controls.Clear();
+            GenBranchRatioButtons();
+            GenBranchButtons();
+        }
+        #region GenBranchRatioButtons
+        private void GenBranchRatioButtons()
+        {
             Dictionary<string, Branch> dict = BranchDataSingleton.Instance.DictBranch;
             if (dict == null)
             {
                 LogSingleton.Instance.Fatal("### BranchDataSingleton.Instance.DictBranch is null.");
                 return;
             }
-            floServer.Controls.Clear();
             int i = 0;
             foreach (KeyValuePair<string, Branch> kv in dict)
             {
-                Branch branch = kv.Value;
                 RadioButton rto = new RadioButton();
-                rto.Name = branch.Name;
-                rto.Text = branch.Name;
+                rto.Text = kv.Key;
                 rto.CheckedChanged += Rto_CheckedChanged;
                 floServer.Controls.Add(rto);
                 if (i++ == 0)
@@ -48,39 +52,51 @@ namespace GQuicker
         private void Rto_CheckedChanged(object sender, EventArgs e)
         {
             RadioButton rto = sender as RadioButton;
-            BranchDataSingleton.Instance.CurBranch = rto.Name;
+            BranchDataSingleton.Instance.CurBranch = rto.Text;
         }
+        #endregion
+
+        #region GenBranchButtons
+        private void GenBranchButtons()
+        {
+            Dictionary<string, BranchButton> dict = BranchDataSingleton.Instance.DictBranchButton;
+            if (dict == null)
+            {
+                LogSingleton.Instance.Fatal("### BranchDataSingleton.Instance.DictBranchButton is null.");
+                return;
+            }
+            int i = 0;
+            foreach (KeyValuePair<string, BranchButton> kv in dict)
+            {
+                Button btn = new Button();
+                btn.AutoSize = true;
+                btn.Text = kv.Key;
+                btn.Click += Btn_Click;
+                floServer.Controls.Add(btn);
+            }
+        }
+        private void Btn_Click(object sender, EventArgs e)
+        {
+            Button btn = sender as Button;
+            Dictionary<string, BranchButton> dict = BranchDataSingleton.Instance.DictBranchButton;
+            if (dict != null && dict.ContainsKey(btn.Text))
+            {
+                BranchButton bb = dict[btn.Text];
+                string branchMatchsrpgPath = BranchDataSingleton.Instance.GetBranchMatchsrpgOrMrPath(BranchDataSingleton.Instance.CurBranch, bb.MatchsrpgOrMr);
+                string fullpath = string.Format($"{branchMatchsrpgPath}{bb.Path}");
+                ProcessSingleton.Instance.OpenDirectory(fullpath);
+            }
+            else
+            {
+                LogSingleton.Instance.Fatal($"### no [{btn.Text}] in BranchDataSingleton.Instance.DictBranchButton.");
+            }
+        }
+        #endregion
 
         #region buttons
         private void btnKillServer_Click(object sender, EventArgs e)
         {
             ProcessSingleton.Instance.KillProcess("svc_launch_d");
-        }
-        private void btnStartServer_Click(object sender, EventArgs e)
-        {
-            btnKillServer_Click(sender, e);
-            string path = BranchDataSingleton.Instance.GetStartServerBatFullPath();
-            ProcessSingleton.Instance.OpenDirectory(path);
-        }
-        private void btnOpenSln_Click(object sender, EventArgs e)
-        {
-            string path = BranchDataSingleton.Instance.GetSlnFullPath();
-            ProcessSingleton.Instance.OpenDirectory(path);
-        }
-        private void btnConfig_Click(object sender, EventArgs e)
-        {
-            string path = BranchDataSingleton.Instance.GetConfigFullPath();
-            ProcessSingleton.Instance.OpenDirectory(path);
-        }
-        private void btnTexture_Click(object sender, EventArgs e)
-        {
-            string path = BranchDataSingleton.Instance.GetTextureFullPath();
-            ProcessSingleton.Instance.OpenDirectory(path);
-        }
-        private void btnCrossplatform_Click(object sender, EventArgs e)
-        {
-            string path = BranchDataSingleton.Instance.GetCrossplatformFullPath();
-            ProcessSingleton.Instance.OpenDirectory(path);
         }
 
         private void btnClearLog_Click(object sender, EventArgs e)

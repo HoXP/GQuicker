@@ -31,14 +31,11 @@
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmMain));
             this.tabpBranch = new System.Windows.Forms.TabPage();
-            this.btnCrossplatform = new System.Windows.Forms.Button();
-            this.btnTexture = new System.Windows.Forms.Button();
-            this.btnConfig = new System.Windows.Forms.Button();
             this.btnKillServer = new System.Windows.Forms.Button();
             this.floServer = new System.Windows.Forms.FlowLayoutPanel();
-            this.btnOpenSln = new System.Windows.Forms.Button();
-            this.btnStartServer = new System.Windows.Forms.Button();
             this.tabMain = new System.Windows.Forms.TabControl();
+            this.tabpOpen = new System.Windows.Forms.TabPage();
+            this.tableLayoutPanel2 = new System.Windows.Forms.TableLayoutPanel();
             this.tabpSetting = new System.Windows.Forms.TabPage();
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
             this.chkAutoStart = new System.Windows.Forms.CheckBox();
@@ -49,6 +46,7 @@
             this.btnClearLog = new System.Windows.Forms.Button();
             this.tabpBranch.SuspendLayout();
             this.tabMain.SuspendLayout();
+            this.tabpOpen.SuspendLayout();
             this.tabpSetting.SuspendLayout();
             this.tableLayoutPanel1.SuspendLayout();
             this.ctmATS.SuspendLayout();
@@ -56,13 +54,8 @@
             // 
             // tabpBranch
             // 
-            this.tabpBranch.Controls.Add(this.btnCrossplatform);
-            this.tabpBranch.Controls.Add(this.btnTexture);
-            this.tabpBranch.Controls.Add(this.btnConfig);
             this.tabpBranch.Controls.Add(this.btnKillServer);
             this.tabpBranch.Controls.Add(this.floServer);
-            this.tabpBranch.Controls.Add(this.btnOpenSln);
-            this.tabpBranch.Controls.Add(this.btnStartServer);
             this.tabpBranch.Location = new System.Drawing.Point(4, 22);
             this.tabpBranch.Name = "tabpBranch";
             this.tabpBranch.Padding = new System.Windows.Forms.Padding(3);
@@ -71,41 +64,6 @@
             this.tabpBranch.Text = "Branch";
             this.tabpBranch.UseVisualStyleBackColor = true;
             // 
-            // btnCrossplatform
-            // 
-            this.btnCrossplatform.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnCrossplatform.Location = new System.Drawing.Point(173, 341);
-            this.btnCrossplatform.Name = "btnCrossplatform";
-            this.btnCrossplatform.Size = new System.Drawing.Size(172, 30);
-            this.btnCrossplatform.TabIndex = 7;
-            this.btnCrossplatform.Text = "crossplatform";
-            this.btnCrossplatform.UseVisualStyleBackColor = true;
-            this.btnCrossplatform.Click += new System.EventHandler(this.btnCrossplatform_Click);
-            // 
-            // btnTexture
-            // 
-            this.btnTexture.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.btnTexture.Location = new System.Drawing.Point(8, 341);
-            this.btnTexture.Name = "btnTexture";
-            this.btnTexture.Size = new System.Drawing.Size(159, 30);
-            this.btnTexture.TabIndex = 6;
-            this.btnTexture.Text = "texture";
-            this.btnTexture.UseVisualStyleBackColor = true;
-            this.btnTexture.Click += new System.EventHandler(this.btnTexture_Click);
-            // 
-            // btnConfig
-            // 
-            this.btnConfig.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnConfig.Location = new System.Drawing.Point(8, 305);
-            this.btnConfig.Name = "btnConfig";
-            this.btnConfig.Size = new System.Drawing.Size(337, 30);
-            this.btnConfig.TabIndex = 5;
-            this.btnConfig.Text = "config";
-            this.btnConfig.UseVisualStyleBackColor = true;
-            this.btnConfig.Click += new System.EventHandler(this.btnConfig_Click);
-            // 
             // btnKillServer
             // 
             this.btnKillServer.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
@@ -113,9 +71,9 @@
             this.btnKillServer.BackColor = System.Drawing.Color.Transparent;
             this.btnKillServer.Font = new System.Drawing.Font("Georgia", 10.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnKillServer.ForeColor = System.Drawing.Color.Red;
-            this.btnKillServer.Location = new System.Drawing.Point(8, 234);
+            this.btnKillServer.Location = new System.Drawing.Point(7, 346);
             this.btnKillServer.Name = "btnKillServer";
-            this.btnKillServer.Size = new System.Drawing.Size(337, 30);
+            this.btnKillServer.Size = new System.Drawing.Size(339, 30);
             this.btnKillServer.TabIndex = 4;
             this.btnKillServer.Text = "KILL";
             this.btnKillServer.UseVisualStyleBackColor = false;
@@ -128,31 +86,8 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.floServer.Location = new System.Drawing.Point(7, 7);
             this.floServer.Name = "floServer";
-            this.floServer.Size = new System.Drawing.Size(339, 221);
+            this.floServer.Size = new System.Drawing.Size(339, 333);
             this.floServer.TabIndex = 3;
-            // 
-            // btnOpenSln
-            // 
-            this.btnOpenSln.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnOpenSln.Location = new System.Drawing.Point(173, 269);
-            this.btnOpenSln.Name = "btnOpenSln";
-            this.btnOpenSln.Size = new System.Drawing.Size(172, 30);
-            this.btnOpenSln.TabIndex = 1;
-            this.btnOpenSln.Text = "sln";
-            this.btnOpenSln.UseVisualStyleBackColor = true;
-            this.btnOpenSln.Click += new System.EventHandler(this.btnOpenSln_Click);
-            // 
-            // btnStartServer
-            // 
-            this.btnStartServer.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.btnStartServer.Location = new System.Drawing.Point(8, 269);
-            this.btnStartServer.Name = "btnStartServer";
-            this.btnStartServer.Size = new System.Drawing.Size(159, 30);
-            this.btnStartServer.TabIndex = 2;
-            this.btnStartServer.Text = "restart";
-            this.btnStartServer.UseVisualStyleBackColor = true;
-            this.btnStartServer.Click += new System.EventHandler(this.btnStartServer_Click);
             // 
             // tabMain
             // 
@@ -160,6 +95,7 @@
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.tabMain.Controls.Add(this.tabpBranch);
+            this.tabMain.Controls.Add(this.tabpOpen);
             this.tabMain.Controls.Add(this.tabpSetting);
             this.tabMain.Location = new System.Drawing.Point(12, 12);
             this.tabMain.Name = "tabMain";
@@ -167,6 +103,30 @@
             this.tabMain.Size = new System.Drawing.Size(360, 408);
             this.tabMain.TabIndex = 1;
             this.tabMain.Enter += new System.EventHandler(this.tabMain_Enter);
+            // 
+            // tabpOpen
+            // 
+            this.tabpOpen.Controls.Add(this.tableLayoutPanel2);
+            this.tabpOpen.Location = new System.Drawing.Point(4, 22);
+            this.tabpOpen.Name = "tabpOpen";
+            this.tabpOpen.Size = new System.Drawing.Size(352, 382);
+            this.tabpOpen.TabIndex = 2;
+            this.tabpOpen.Text = "Open";
+            this.tabpOpen.UseVisualStyleBackColor = true;
+            // 
+            // tableLayoutPanel2
+            // 
+            this.tableLayoutPanel2.ColumnCount = 2;
+            this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.tableLayoutPanel2.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.tableLayoutPanel2.Location = new System.Drawing.Point(0, 0);
+            this.tableLayoutPanel2.Name = "tableLayoutPanel2";
+            this.tableLayoutPanel2.RowCount = 2;
+            this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.tableLayoutPanel2.Size = new System.Drawing.Size(352, 382);
+            this.tableLayoutPanel2.TabIndex = 0;
             // 
             // tabpSetting
             // 
@@ -271,6 +231,7 @@
             this.Load += new System.EventHandler(this.frmMain_Load);
             this.tabpBranch.ResumeLayout(false);
             this.tabMain.ResumeLayout(false);
+            this.tabpOpen.ResumeLayout(false);
             this.tabpSetting.ResumeLayout(false);
             this.tableLayoutPanel1.ResumeLayout(false);
             this.tableLayoutPanel1.PerformLayout();
@@ -283,22 +244,19 @@
         #endregion
 
         private System.Windows.Forms.TabPage tabpBranch;
-        private System.Windows.Forms.Button btnOpenSln;
         private System.Windows.Forms.TabControl tabMain;
-        private System.Windows.Forms.Button btnStartServer;
         private System.Windows.Forms.TextBox txbLog;
         private System.Windows.Forms.FlowLayoutPanel floServer;
         private System.Windows.Forms.Button btnKillServer;
-        private System.Windows.Forms.Button btnConfig;
-        private System.Windows.Forms.Button btnTexture;
         private System.Windows.Forms.NotifyIcon ntfATS;
         private System.Windows.Forms.ContextMenuStrip ctmATS;
         private System.Windows.Forms.ToolStripMenuItem ctmItemQuit;
-        private System.Windows.Forms.Button btnCrossplatform;
         private System.Windows.Forms.TabPage tabpSetting;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel1;
         private System.Windows.Forms.CheckBox chkAutoStart;
         private System.Windows.Forms.Button btnClearLog;
+        private System.Windows.Forms.TabPage tabpOpen;
+        private System.Windows.Forms.TableLayoutPanel tableLayoutPanel2;
     }
 }
 
