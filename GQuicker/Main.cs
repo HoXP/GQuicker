@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Drawing;
 using System.Windows.Forms;
 
 namespace GQuicker
@@ -11,6 +12,7 @@ namespace GQuicker
             InitializeComponent();
             LogSingleton.Instance.Init(txbLog);
             BranchDataSingleton.Instance.Init();
+            OpenDataSingleton.Instance.Init();
             chkAutoStart.Checked = ToolsSingleton.Instance.IsAutoStart();
         }
 
@@ -23,9 +25,11 @@ namespace GQuicker
 
         private void tabMain_Enter(object sender, EventArgs e)
         {
-            floServer.Controls.Clear();
+            floBranch.Controls.Clear();
+            floOpen.Controls.Clear();
             GenBranchRatioButtons();
             GenBranchButtons();
+            GenOpenButtons();
         }
         #region GenBranchRatioButtons
         private void GenBranchRatioButtons()
@@ -42,7 +46,7 @@ namespace GQuicker
                 RadioButton rto = new RadioButton();
                 rto.Text = kv.Key;
                 rto.CheckedChanged += Rto_CheckedChanged;
-                floServer.Controls.Add(rto);
+                floBranch.Controls.Add(rto);
                 if (i++ == 0)
                 {
                     rto.Checked = true;
@@ -69,10 +73,11 @@ namespace GQuicker
             foreach (KeyValuePair<string, BranchButton> kv in dict)
             {
                 Button btn = new Button();
-                btn.AutoSize = true;
+                btn.Anchor = AnchorStyles.Left | AnchorStyles.Right;
+                btn.Size = new Size(floBranch.Size.Width - 6, btn.Size.Height);
                 btn.Text = kv.Key;
                 btn.Click += Btn_Click;
-                floServer.Controls.Add(btn);
+                floBranch.Controls.Add(btn);
             }
         }
         private void Btn_Click(object sender, EventArgs e)
@@ -89,6 +94,42 @@ namespace GQuicker
             else
             {
                 LogSingleton.Instance.Fatal($"### no [{btn.Text}] in BranchDataSingleton.Instance.DictBranchButton.");
+            }
+        }
+        #endregion
+
+        #region GenOpenButtons
+        private void GenOpenButtons()
+        {
+            Dictionary<string, string> dict = OpenDataSingleton.Instance.DictOpenButton;
+            if (dict == null)
+            {
+                LogSingleton.Instance.Fatal("### OpenDataSingleton.Instance.DictOpenButton is null.");
+                return;
+            }
+            int i = 0;
+            foreach (KeyValuePair<string, string> kv in dict)
+            {
+                Button btnOpen = new Button();
+                btnOpen.Anchor = AnchorStyles.Left | AnchorStyles.Right;
+                btnOpen.Size = new Size(floOpen.Size.Width - 6, btnOpen.Size.Height);
+                btnOpen.Text = kv.Key;
+                btnOpen.Click += BtnOpen_Click; ;
+                floOpen.Controls.Add(btnOpen);
+            }
+        }
+        private void BtnOpen_Click(object sender, EventArgs e)
+        {
+            Button btn = sender as Button;
+            Dictionary<string, string> dict = OpenDataSingleton.Instance.DictOpenButton;
+            if (dict != null && dict.ContainsKey(btn.Text))
+            {
+                string path = dict[btn.Text];
+                ProcessSingleton.Instance.OpenDirectory(path);
+            }
+            else
+            {
+                LogSingleton.Instance.Fatal($"### no [{btn.Text}] in OpenDataSingleton.Instance.DictOpenButton.");
             }
         }
         #endregion

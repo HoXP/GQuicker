@@ -58,6 +58,7 @@
     <Compile Include="ConfigHelper.cs" />
     <Compile Include="Const.cs" />
     <Compile Include="HotKey.cs" />
+    <Compile Include="OpenDataSingleton.cs" />
     <Compile Include="ToolsSingleton.cs" />
     <Compile Include="ProcessSingleton.cs" />
     <Compile Include="LogSingleton.cs" />

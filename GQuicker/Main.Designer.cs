@@ -32,10 +32,9 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmMain));
             this.tabpBranch = new System.Windows.Forms.TabPage();
             this.btnKillServer = new System.Windows.Forms.Button();
-            this.floServer = new System.Windows.Forms.FlowLayoutPanel();
+            this.floBranch = new System.Windows.Forms.FlowLayoutPanel();
             this.tabMain = new System.Windows.Forms.TabControl();
             this.tabpOpen = new System.Windows.Forms.TabPage();
-            this.tableLayoutPanel2 = new System.Windows.Forms.TableLayoutPanel();
             this.tabpSetting = new System.Windows.Forms.TabPage();
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
             this.chkAutoStart = new System.Windows.Forms.CheckBox();
@@ -44,6 +43,7 @@
             this.ctmATS = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.ctmItemQuit = new System.Windows.Forms.ToolStripMenuItem();
             this.btnClearLog = new System.Windows.Forms.Button();
+            this.floOpen = new System.Windows.Forms.FlowLayoutPanel();
             this.tabpBranch.SuspendLayout();
             this.tabMain.SuspendLayout();
             this.tabpOpen.SuspendLayout();
@@ -55,7 +55,7 @@
             // tabpBranch
             // 
             this.tabpBranch.Controls.Add(this.btnKillServer);
-            this.tabpBranch.Controls.Add(this.floServer);
+            this.tabpBranch.Controls.Add(this.floBranch);
             this.tabpBranch.Location = new System.Drawing.Point(4, 22);
             this.tabpBranch.Name = "tabpBranch";
             this.tabpBranch.Padding = new System.Windows.Forms.Padding(3);
@@ -69,8 +69,6 @@
             this.btnKillServer.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.btnKillServer.BackColor = System.Drawing.Color.Transparent;
-            this.btnKillServer.Font = new System.Drawing.Font("Georgia", 10.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnKillServer.ForeColor = System.Drawing.Color.Red;
             this.btnKillServer.Location = new System.Drawing.Point(7, 346);
             this.btnKillServer.Name = "btnKillServer";
             this.btnKillServer.Size = new System.Drawing.Size(339, 30);
@@ -79,15 +77,15 @@
             this.btnKillServer.UseVisualStyleBackColor = false;
             this.btnKillServer.Click += new System.EventHandler(this.btnKillServer_Click);
             // 
-            // floServer
+            // floBranch
             // 
-            this.floServer.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            this.floBranch.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.floServer.Location = new System.Drawing.Point(7, 7);
-            this.floServer.Name = "floServer";
-            this.floServer.Size = new System.Drawing.Size(339, 333);
-            this.floServer.TabIndex = 3;
+            this.floBranch.Location = new System.Drawing.Point(7, 7);
+            this.floBranch.Name = "floBranch";
+            this.floBranch.Size = new System.Drawing.Size(339, 333);
+            this.floBranch.TabIndex = 3;
             // 
             // tabMain
             // 
@@ -106,27 +104,13 @@
             // 
             // tabpOpen
             // 
-            this.tabpOpen.Controls.Add(this.tableLayoutPanel2);
+            this.tabpOpen.Controls.Add(this.floOpen);
             this.tabpOpen.Location = new System.Drawing.Point(4, 22);
             this.tabpOpen.Name = "tabpOpen";
             this.tabpOpen.Size = new System.Drawing.Size(352, 382);
             this.tabpOpen.TabIndex = 2;
             this.tabpOpen.Text = "Open";
             this.tabpOpen.UseVisualStyleBackColor = true;
-            // 
-            // tableLayoutPanel2
-            // 
-            this.tableLayoutPanel2.ColumnCount = 2;
-            this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tableLayoutPanel2.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tableLayoutPanel2.Location = new System.Drawing.Point(0, 0);
-            this.tableLayoutPanel2.Name = "tableLayoutPanel2";
-            this.tableLayoutPanel2.RowCount = 2;
-            this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tableLayoutPanel2.Size = new System.Drawing.Size(352, 382);
-            this.tableLayoutPanel2.TabIndex = 0;
             // 
             // tabpSetting
             // 
@@ -211,6 +195,14 @@
             this.btnClearLog.UseVisualStyleBackColor = true;
             this.btnClearLog.Click += new System.EventHandler(this.btnClearLog_Click);
             // 
+            // floOpen
+            // 
+            this.floOpen.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.floOpen.Location = new System.Drawing.Point(0, 0);
+            this.floOpen.Name = "floOpen";
+            this.floOpen.Size = new System.Drawing.Size(352, 382);
+            this.floOpen.TabIndex = 0;
+            // 
             // frmMain
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
@@ -246,7 +238,7 @@
         private System.Windows.Forms.TabPage tabpBranch;
         private System.Windows.Forms.TabControl tabMain;
         private System.Windows.Forms.TextBox txbLog;
-        private System.Windows.Forms.FlowLayoutPanel floServer;
+        private System.Windows.Forms.FlowLayoutPanel floBranch;
         private System.Windows.Forms.Button btnKillServer;
         private System.Windows.Forms.NotifyIcon ntfATS;
         private System.Windows.Forms.ContextMenuStrip ctmATS;
@@ -256,7 +248,7 @@
         private System.Windows.Forms.CheckBox chkAutoStart;
         private System.Windows.Forms.Button btnClearLog;
         private System.Windows.Forms.TabPage tabpOpen;
-        private System.Windows.Forms.TableLayoutPanel tableLayoutPanel2;
+        private System.Windows.Forms.FlowLayoutPanel floOpen;
     }
 }
 

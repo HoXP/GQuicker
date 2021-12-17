@@ -76,17 +76,11 @@ namespace GQuicker
             Branch branch = GetBranch(name);
             if (branch != null)
             {
-                string depot_matchsrpgPath = GetAppSettingValue("depot_matchsrpgPath");
-                string matchsrpgOrMrPath = GetAppSettingValue(matchsrpgOrMr);
+                string depot_matchsrpgPath = ConfigHelper.GetAppSettingValue("depot_matchsrpgPath");
+                string matchsrpgOrMrPath = ConfigHelper.GetAppSettingValue(matchsrpgOrMr);
                 return string.Format($"{branch.DiskPath}{depot_matchsrpgPath}{matchsrpgOrMrPath}{branch.Path}");
             }
             return null;
-        }
-
-        internal string GetAppSettingValue(string key)
-        {
-            string value = ConfigurationManager.AppSettings[key];
-            return value;
         }
     }
 
