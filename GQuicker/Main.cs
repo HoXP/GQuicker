@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Drawing;
+using System.Threading;
 using System.Windows.Forms;
 
 namespace GQuicker
@@ -10,10 +11,16 @@ namespace GQuicker
         public frmMain()
         {
             InitializeComponent();
+            ThreadPool.RegisterWaitForSingleObject(Program.ProgramStarted, OnProgramStarted, null, -1, false);
             LogSingleton.Instance.Init(txbLog);
             BranchDataSingleton.Instance.Init();
             OpenDataSingleton.Instance.Init();
             chkAutoStart.Checked = ToolsSingleton.Instance.IsAutoStart();
+        }
+        private void OnProgramStarted(object state, bool timedOut)
+        {
+            ShowHideFrmMain(true);
+            LogSingleton.Instance.Fatal("### 程序已启动");
         }
 
         private void frmMain_Load(object sender, EventArgs e)
