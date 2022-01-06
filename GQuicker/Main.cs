@@ -27,6 +27,7 @@ namespace GQuicker
         {
             Hotkey hotkey = new Hotkey(Handle);
             Hotkey.HKShowHideMain = hotkey.RegisterHotkey(Keys.None, Hotkey.KeyFlags.MOD_CONTROL);
+            Hotkey.HKHideMain = hotkey.RegisterHotkey(Keys.Escape, 0);
             hotkey.OnHotkey += new HotkeyEventHandler(OnHotkey);
         }
 
@@ -202,6 +203,13 @@ namespace GQuicker
                 else
                 {
                     ShowHideFrmMain(true);
+                }
+            }
+            if (HotkeyID == Hotkey.HKHideMain)
+            {
+                if (Visible)
+                {
+                    ShowHideFrmMain(false);
                 }
             }
         }

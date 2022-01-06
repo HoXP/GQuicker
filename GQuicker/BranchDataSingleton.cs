@@ -28,13 +28,14 @@ namespace GQuicker
                 }
                 NameValueCollection nvc = o as NameValueCollection;
                 string name = nvc["Name"];
+                string disk = nvc["Disk"];
                 string path = nvc["Path"];
                 if (string.IsNullOrEmpty(name) || string.IsNullOrEmpty(path))
                 {
                     LogSingleton.Instance.Fatal($"### no key [{name}] or [{path}].");
                     continue;
                 }
-                Branch branch = new Branch(sectionName, name, path);
+                Branch branch = new Branch(sectionName, name, disk, path);
                 DictBranch.Add(name, branch);
             }
             //分支按钮
@@ -78,7 +79,7 @@ namespace GQuicker
             {
                 string depot_matchsrpgPath = ConfigHelper.GetAppSettingValue("depot_matchsrpgPath");
                 string matchsrpgOrMrPath = ConfigHelper.GetAppSettingValue(matchsrpgOrMr);
-                return string.Format($"{branch.DiskPath}{depot_matchsrpgPath}{matchsrpgOrMrPath}{branch.Path}");
+                return string.Format($"{branch.Disk}{depot_matchsrpgPath}{matchsrpgOrMrPath}{branch.Path}");
             }
             return null;
         }
@@ -88,17 +89,16 @@ namespace GQuicker
     {
         public string SectionName { get; private set; } = string.Empty;
         public string Name { get; private set; } = string.Empty;
-        public string DiskPath { get; private set; } = string.Empty;
+        public string Disk { get; private set; } = string.Empty;
         public string Path { get; private set; } = string.Empty;
 
         private Branch() { }
-        public Branch(string sectionName, string name, string path)
+        public Branch(string sectionName, string name, string disk, string path)
         {
             SectionName = sectionName;
             Name = name;
-            string[] s = path.Split(';');
-            DiskPath = s[0];
-            Path = s[1];
+            Disk = disk;
+            Path = path;
         }
     }
     class BranchButton

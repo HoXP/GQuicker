@@ -11,6 +11,7 @@ namespace GQuicker
         Hashtable keyIDs = new Hashtable();
         IntPtr hWnd;
         static public int HKShowHideMain;
+        static public int HKHideMain;
         public event HotkeyEventHandler OnHotkey;
         public enum KeyFlags
         {
