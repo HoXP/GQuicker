@@ -8,6 +8,8 @@ namespace GQuicker
 {
     public partial class frmMain : Form
     {
+        Hotkey hotkey;
+
         public frmMain()
         {
             InitializeComponent();
@@ -25,7 +27,7 @@ namespace GQuicker
 
         private void frmMain_Load(object sender, EventArgs e)
         {
-            Hotkey hotkey = new Hotkey(Handle);
+            hotkey = new Hotkey(Handle);
             Hotkey.HKShowHideMain = hotkey.RegisterHotkey(Keys.None, Hotkey.KeyFlags.MOD_CONTROL);
             Hotkey.HKHideMain = hotkey.RegisterHotkey(Keys.Escape, 0);
             hotkey.OnHotkey += new HotkeyEventHandler(OnHotkey);
@@ -182,6 +184,7 @@ namespace GQuicker
                 {
                     Visible = true;
                     Activate(); //激活窗体并给予它焦点
+                    Hotkey.HKHideMain = hotkey.RegisterHotkey(Keys.Escape, 0);
                 }
             }
             else
@@ -189,6 +192,7 @@ namespace GQuicker
                 if (Visible)
                 {
                     Visible = false;
+                    hotkey.UnRegisterHotkey(Hotkey.HKHideMain);
                 }
             }
         }

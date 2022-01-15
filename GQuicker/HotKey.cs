@@ -40,6 +40,13 @@ namespace GQuicker
             keyIDs.Add(hotkeyid, hotkeyid);
             return (int)hotkeyid;
         }
+        public void UnRegisterHotkey(int hotkeyid)
+        {
+            uint key = (uint)hotkeyid;
+            UnregisterHotKey(hWnd, key);
+            GlobalDeleteAtom(key);
+            keyIDs.Remove(key);
+        }
         public void UnregisterHotkeys()
         {
             Application.RemoveMessageFilter(this);
