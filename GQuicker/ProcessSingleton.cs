@@ -8,7 +8,7 @@ namespace GQuicker
         
         public void OpenDirectory(string path)
         {
-            Process.Start("explorer.exe", path);
+            Process.Start("explorer.exe", path.Replace("/", "\\"));
         }
 
         internal void KillProcess(string processName)
